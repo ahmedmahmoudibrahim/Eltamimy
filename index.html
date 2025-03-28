@@ -8,7 +8,8 @@
     <title>حساب الاشــكال الهندسية</title>
     <link rel="icon" href="logo.jpg" type="image/jpg">
     <style>
-        body {
+
+         body {
             font-family: monospace;
             background-color: #595f64;
             direction: rtl;
@@ -103,12 +104,11 @@
             font-weight: bold;
             display: none;
         }
-
         footer {
-            font-family: 'Courier New', Courier, monospace;
             display: flex;
+            flex-wrap: wrap;
             justify-content: space-around;
-            background-color: #134967;
+            background-color: #575d60;
             color: #ecf0f1;
             padding: 20px;
             text-align: right;
@@ -116,35 +116,64 @@
             border-radius: 5px;
         }
 
+        footer div {
+            width: 30%;
+            border: 1px solid #a2a9ae;
+            padding: 10px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            margin: 5px;
+            box-sizing: border-box;
+            background-color: #134967;
+        }
+
         footer h3 {
+            text-align: center;
             margin-bottom: 10px;
             border-bottom: 2px solid #a2a9ae;
             padding-bottom: 5px;
-            text-align: center;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
-
-        footer div {
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            width: 30%;
-            border: 1px solid #a2a9ae;
-            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            border-radius: 4px;
         }
 
         footer p {
             margin: 5px 0;
             font-size: 14px;
             line-height: 1.6;
-            padding: 7px 7px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-            border-radius: 5px;
-        }
+            word-wrap: break-word;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            border-radius: 4px;
 
+            
+
+
+        }
+        footer a {
+            color: #f39c12;
+            font-weight: bold;
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            word-wrap: break-word;
+            
+        }
+        a:visited {
+           color: purple;
+                }
+        a:active{
+            color: blueviolet;
+        }
+        a:hover {
+                color: red;
+
+            }
         footer span {
+            
             font-weight: bold;
             color: #f39c12;
-        }
+        } 
 
         #formContainer label {
             display: block;
@@ -172,7 +201,7 @@
             border: none;
             border-radius: 5px;
             cursor: pointer;
-            display: block; /* يجعل الزر في المنتصف */
+            display: block; 
             margin: 10px auto;
             transition: background-color 0.3s;
         }
@@ -183,21 +212,93 @@
 
         .container {
             display: flex;
-            align-items: center; /* محاذاة العناصر في المنتصف */
+            align-items: center;
         }
 
         .image {
-            width: 50px; /* عرض الصورة */
-            height: 50px ; /* ارتفاع الصورة */
-            margin-right: 5px; /* إضافة مسافة بين الصورة والنص */
+            width: 50px;
+            height: 50px ;
+            margin-right: 5px; 
         }
 
         .text {
-            font-size: 16px; /* حجم النص */
-            color: #333; /* لون النص */
-            display: flex; /* استخدام flexbox */
-            align-items:normal; /* محاذاة النص في المنتصف عموديًا */
+            font-size: 16px; 
+            color: #333; 
+            display: flex;
+            align-items:normal; 
         }
+
+        textarea {
+            position:relative;
+            width:80%; 
+            height: 80px;
+            margin: 10px 0px;
+            padding: 10px 0px ;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+        }
+        .send-button {
+            background-color: #969b96;
+            color: #fff;
+            border: none;
+            padding: 10px 0px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 10px;
+
+        
+        }
+        .send-button:hover {
+            background-color: #ffffff;
+            color: #000;
+        }
+
+   @media (max-width: 1024px) {
+        .content {
+            flex-direction: column;
+        }
+        .sidebar, .calculation-area {
+            width: 100%;
+            margin-bottom: 20px;
+        }
+    }
+
+    @media (max-width: 768px) {
+        header h1 {
+            font-size: 20px;
+        }
+        .logo {
+            width: 50px;
+        }
+        .sidebar button, .calculation-area button {
+            padding: 8px;
+            font-size: 14px;
+        }
+        textarea {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 480px) {
+        header h1 {
+            font-size: 18px;
+        }
+        .content {
+            padding: 8px;   
+        }
+        .sidebar button, .calculation-area button {
+            width: 100%;    
+
+
+        }
+        footer div {
+            width: 100%;
+            margin-bottom: 15px;
+        }
+    } 
+
+
+
     </style>
 </head>
 <body>
@@ -231,7 +332,7 @@
 
     <footer>
         <div>
-            <h3>رؤيتنا ورســـالــتـــنا</h3>
+            <h3>رؤيتنا ورســالـتـنا</h3>
             <p>نهدف إلى تسهيل الحسابات الهندسية وتوفير تجربة مستخدم مريحة.</p>
         </div>
     
@@ -244,11 +345,20 @@
     
         <div>
             <h3>اتصل بنا</h3>
-            <p>البريد الإلكتروني: p.eng.a.elattar@gmail.com</p>
+            <p>البريد الإلكتروني: <a href="mailto:p.eng.a.elattar@gmail.com">p.eng.a.elattar@gmail.com</a></p>
+    
+            <textarea id="message" placeholder="اكتب رسالتك هنا..."></textarea>
+            <button class="send-button" onclick="sendEmail()">إرسال</button>
         </div>
     </footer>
 
     <script>
+        function sendEmail() {
+            const message = document.getElementById('message').value;
+            const subject = 'رسالة من موقعك';
+            const mailtoLink = `mailto:p.eng.a.elattar@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(message)}`;
+            window.location.href = mailtoLink;
+        }
         function showCalculation(shape) {
             const formContainer = document.getElementById('formContainer');
             const resultContainer = document.getElementById('resultContainer');
