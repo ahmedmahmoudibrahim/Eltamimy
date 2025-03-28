@@ -1,0 +1,385 @@
+
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>حساب الاشــكال الهندسية</title>
+    <link rel="icon" href="logo.jpg" type="image/jpg">
+    <style>
+        body {
+            font-family: monospace;
+            background-color: #595f64;
+            direction: rtl;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        header {
+            background-color: #134967;
+            color: #fff;
+            text-align: center;
+            padding: 15px;
+            border-bottom: 5px solid #1e77bc;
+        }
+
+        .logo {
+            width: 80px;
+            margin-top: 1px;
+        }
+
+        .content {
+            display: flex;
+            padding: 20px;
+        }
+
+        .sidebar {
+            background-color: #134967;
+            width: 30%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .sidebar h1 {
+            color: #ecf0f1;
+            text-align: center;
+        }
+
+        .sidebar button {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: medium;
+            width: 100%;
+            background-color: #a2a9ae;
+            color: #000000;
+            font-weight: bold;
+            border: none;
+            padding: 10px;
+            margin: 5px 0;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .sidebar button:hover {
+            background-color: #ffffff;
+        }
+
+        .calculation-area {
+            background-color: #a2a9ae;
+            width: 60%;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: right;
+            font-size: medium;
+        }
+
+        input, select, button {
+            padding: 20px;
+            width: 70%;
+            margin: 5px 5px;
+            border: 1px solid #09496c;
+            border-radius: 5px;
+            outline: none;
+            transition: border 0.3s;
+        }
+
+        input:hover, select:hover {
+            border: 1px solid #e2e5e7;
+        }
+
+        #resultContainer {
+            width: 90%;
+            margin-top: 20px;
+            padding: 11px;
+            font-size: 16px;
+            background-color: #d1f3c4;
+            border: 1px solid #4caf50;
+            border-radius: 5px;
+            color: #37ab3b;
+            font-weight: bold;
+            display: none;
+        }
+
+        footer {
+            font-family: 'Courier New', Courier, monospace;
+            display: flex;
+            justify-content: space-around;
+            background-color: #134967;
+            color: #ecf0f1;
+            padding: 20px;
+            text-align: right;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        footer h3 {
+            margin-bottom: 10px;
+            border-bottom: 2px solid #a2a9ae;
+            padding-bottom: 5px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        footer div {
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            width: 30%;
+            border: 1px solid #a2a9ae;
+            border-radius: 5px;
+        }
+
+        footer p {
+            margin: 5px 0;
+            font-size: 14px;
+            line-height: 1.6;
+            padding: 7px 7px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            border-radius: 5px;
+        }
+
+        footer span {
+            font-weight: bold;
+            color: #f39c12;
+        }
+
+        #formContainer label {
+            display: block;
+            color: #000;
+            font-size: 21px;
+            margin-bottom: 5px;
+        }
+
+        #formContainer input {
+            width: 90%;
+            padding: 8px;
+            font-size: 16px;
+            border: 2px solid #09496c;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+            margin-bottom: 15px;
+        }
+
+        #formContainer button {
+            width: 40%;
+            background-color: #1e77bc;
+            color: #fff;
+            font-size: 16px;
+            padding: 10px 0;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            display: block; /* يجعل الزر في المنتصف */
+            margin: 10px auto;
+            transition: background-color 0.3s;
+        }
+
+        #formContainer button:hover {
+            background-color: #134967;
+        }
+
+        .container {
+            display: flex;
+            align-items: center; /* محاذاة العناصر في المنتصف */
+        }
+
+        .image {
+            width: 50px; /* عرض الصورة */
+            height: 50px ; /* ارتفاع الصورة */
+            margin-right: 5px; /* إضافة مسافة بين الصورة والنص */
+        }
+
+        .text {
+            font-size: 16px; /* حجم النص */
+            color: #333; /* لون النص */
+            display: flex; /* استخدام flexbox */
+            align-items:normal; /* محاذاة النص في المنتصف عموديًا */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>  موقع حســاب الاشــكال الهندسية العــامة</h1>
+        <img src="reqtangle.jpg" alt="شعار الموقع" class="logo">
+        <img src="square.jpg" alt="شعار الموقع" class="logo">
+        <img src="circle.jpg" alt="شعار الموقع" class="logo">
+        <img src="qube.jpg" alt="شعار الموقع" class="logo">
+        <img src="rectangle.webp" alt="شعار الموقع" class="logo">
+        <img src="all.jpg" alt="شعار الموقع" class="logo">
+    </header>
+
+    <section class="content">
+        <div class="sidebar">
+            <h1>الأشكــال الهـنـدسـيـة</h1>
+            <button onclick="showCalculation('square')">مربع</button>
+            <button onclick="showCalculation('rectangle')">مستطيل</button>
+            <button onclick="showCalculation('triangleBase')">مثلث (قاعدة × ارتفاع)</button>
+            <button onclick="showCalculation('triangleHeron')">مثلث (قانون هيرون)</button>
+            <button onclick="showCalculation('circle')">دائرة</button>
+            <button onclick="showCalculation('cube')">مكعب</button>
+        </div>
+
+        <div class="calculation-area" id="calculationArea">
+            <h2 id="calculationTitle">اختر الشـــكل المطلوب حسابه</h2>
+            <div id="formContainer"></div>
+            <div id="resultContainer"></div>
+        </div>
+    </section>
+
+    <footer>
+        <div>
+            <h3>رؤيتنا ورســـالــتـــنا</h3>
+            <p>نهدف إلى تسهيل الحسابات الهندسية وتوفير تجربة مستخدم مريحة.</p>
+        </div>
+    
+        <div>
+            <h3>عن المــــطور</h3>
+            <p>الاســــــم : م/ احمد محمود ابراهيم</p>
+            <p>الرقم الجامعي : 23510080</p>
+            <p>في اطار مشروع الواجب الدراسي <span>TMA</span>, مادة تطوير مواقع الويب <span>TT284</span></p>
+        </div>
+    
+        <div>
+            <h3>اتصل بنا</h3>
+            <p>البريد الإلكتروني: p.eng.a.elattar@gmail.com</p>
+        </div>
+    </footer>
+
+    <script>
+        function showCalculation(shape) {
+            const formContainer = document.getElementById('formContainer');
+            const resultContainer = document.getElementById('resultContainer');
+            const calculationTitle = document.getElementById('calculationTitle');
+
+            formContainer.innerHTML = '';
+            resultContainer.style.display = 'none';
+
+            let shapeDetails = getShapeDetails(shape);
+            let formHtml = '';
+            switch (shape) {
+                case 'square':
+                    formHtml = `<label>طول الضلع:</label>
+                                <input type='number' id='side' placeholder='أدخل طول الضلع'>
+                                <button onclick='calculateSquare()'>احسب</button>`;
+                    break;
+                case 'rectangle':
+                    formHtml = `<label>الطول:</label>
+                                <input type='number' id='length' placeholder='أدخل الطول'>
+                                <label>العرض:</label>
+                                <input type='number' id='width' placeholder='أدخل العرض'>
+                                <button onclick='calculateRectangle()'>احسب</button>`;
+                    break;
+                case 'cube':
+                    formHtml = `<label>طول الضلع:</label>
+                                <input type='number' id='cubeSide' placeholder='أدخل طول الضلع'>
+                                <button onclick='calculateCube()'>احسب</button>`;
+                    break;
+                case 'triangleBase':
+                    formHtml = `<label>القاعدة:</label>
+                                <input type='number' id='base' placeholder='أدخل القاعدة'>
+                                <label>الارتفاع:</label>
+                                <input type='number' id='height' placeholder='أدخل الارتفاع'>
+                                <button onclick='calculateTriangleBase()'>احسب</button>`;
+                    break;
+                case 'triangleHeron':
+                    formHtml = `<label>الضلع الأول:</label>
+                                <input type='number' id='a' placeholder='أدخل الضلع الأول'>
+                                <label>الضلع الثاني:</label>
+                                <input type='number' id='b' placeholder='أدخل الضلع الثاني'>
+                                <label>الضلع الثالث:</label>
+                                <input type='number' id='c' placeholder='أدخل الضلع الثالث'>
+                                <button onclick='calculateTriangleHeron()'>احسب</button>`;
+                    break;
+                case 'circle':
+                    formHtml = `<label>نصف القطر:</label>
+                                <input type='number' id='radius' placeholder='أدخل نصف القطر'>
+                                <button onclick='calculateCircle()'>احسب</button>`;
+                    break;
+            }
+            formContainer.innerHTML = formHtml;
+
+            // تحديث عنوان الحساب مع الصورة
+            calculationTitle.innerHTML = `
+                <div class="container">
+                    <span class="text">ادخل القيم لحساب ${shapeDetails.name}</span>
+                    <img src='${shapeDetails.image}' alt='${shapeDetails.name}' class="image">
+                </div>
+            `;
+        }
+
+        function getShapeDetails(shape) {
+            switch (shape) {
+                case 'square': 
+                    return { name: 'المربع', image: 'square.png' };
+                case 'rectangle': 
+                    return { name: 'المستطيل', image: 'rectangle.png' };
+                case 'cube': 
+                    return { name: 'المكعب', image: 'cube.png' };
+                case 'triangleBase': 
+                    return { name: 'المثلث (قاعدة × ارتفاع)', image: 'baseT.png' };
+                case 'triangleHeron': 
+                    return { name: 'المثلث (قانون هيرون)', image: 'heronT.png' };
+                case 'circle': 
+                    return { name: 'الدائرة', image: 'circle.png' };
+                default: 
+                    return { name: '', image: '' };
+            }
+        }
+
+        function calculateTriangleBase() {
+            const base = parseFloat(document.getElementById('base').value);
+            const height = parseFloat(document.getElementById('height').value);
+            displayResult(`مساحة المثلث: ${(base * height) / 2}`);
+        }
+
+        function calculateTriangleHeron() {
+            const a = parseFloat(document.getElementById('a').value);
+            const b = parseFloat(document.getElementById('b').value);
+            const c = parseFloat(document.getElementById('c').value);
+
+            // Check if the sides can form a triangle
+            if (a + b <= c || a + c <= b || b + c <= a) {
+                displayResult("الأطوال المدخلة لا يمكن أن تشكل مثلثًا.");
+                return;
+            }
+
+            const s = (a + b + c) / 2;
+            const area = Math.sqrt(s * (s - a) * (s - b) * (s - c));
+            const perimeter = a + b + c;
+            displayResult(`مساحة المثلث: ${area.toFixed(2)} <br> محيط المثلث: ${perimeter}`);
+        }
+
+        function calculateCircle() {
+            const radius = parseFloat(document.getElementById('radius').value);
+            const area = Math.PI * radius * radius;
+            const perimeter = 2 * Math.PI * radius;
+            displayResult(`مساحة الدائرة: ${area.toFixed(2)} <br> محيط الدائرة: ${perimeter.toFixed(2)}`);
+        }
+
+        function calculateSquare() {
+            const side = parseFloat(document.getElementById('side').value);
+            displayResult(`مساحة المربع: ${side * side} <br> محيط المربع: ${4 * side}`);
+        }
+
+        function calculateRectangle() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+            displayResult(`مساحة المستطيل: ${length * width} <br> محيط المستطيل: ${2 * (length + width)}`);
+        }
+
+        function calculateCube() {
+            const side = parseFloat(document.getElementById('cubeSide').value);
+            displayResult(`حجم المكعب: ${Math.pow(side, 3)} <br> مساحة سطح المكعب: ${6 * Math.pow(side, 2)}`);
+        }
+
+        function displayResult(result) {
+            const resultContainer = document.getElementById('resultContainer');
+            resultContainer.innerHTML = result;
+            resultContainer.style.display = 'block';
+        }
+    </script>
+</body>
+</html>
